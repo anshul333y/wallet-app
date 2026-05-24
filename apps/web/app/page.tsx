@@ -1,7 +1,12 @@
-import styles from "./page.module.css";
-import { prisma } from "@repo/db";
+"use client";
 
-export default async function Home() {
-  const user = await prisma.user.findFirst();
-  return <div className={styles.page}>{user?.name ?? "No user added yet"}</div>;
+import { useBalance } from "@repo/store";
+
+export default function Home() {
+  const balance = useBalance();
+  return (
+    <>
+      <div>your balance is : {balance}</div>
+    </>
+  );
 }
